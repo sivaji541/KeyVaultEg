@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj": {}
+    "D:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj": {}
   },
   "projects": {
-    "d:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj": {
+    "D:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj",
+        "projectUniqueName": "D:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj",
         "projectName": "KeyVaultMsiWebAppCore",
-        "projectPath": "d:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj",
+        "projectPath": "D:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\KeyVaultMsiWebAppCore.csproj",
         "packagesPath": "C:\\Users\\MASTERS\\.nuget\\packages\\",
-        "outputPath": "d:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\obj\\",
+        "outputPath": "D:\\DemoFiles\\Siemens\\KeyVaultMsiWebAppCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
+            "Azure.Security.KeyVault.Secrets": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

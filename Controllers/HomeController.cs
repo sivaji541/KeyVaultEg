@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using KeyVaultMsiWebAppCore.Models;
 using Microsoft.Extensions.Configuration;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 namespace KeyVaultMsiWebAppCore.Controllers
 {
@@ -24,12 +26,30 @@ namespace KeyVaultMsiWebAppCore.Controllers
 
         public IActionResult Index()
         {
-            var section = this.Configuration.GetSection("AppSettings");
-            string keyVaultName = section.GetValue<string>("KeyVaultName");
-            string secretName = section.GetValue<string>("SecretName");
+            string keyVaultName = this.Configuration.GetValue<string>("KeyVaultName");
+            string secretName = this.Configuration.GetValue<string>("SecretName");            
 
             ViewBag.MyKeyVaultName = keyVaultName;
             ViewBag.MySecretName = secretName;
+
+            string secretValue;
+
+            try
+            {
+                var kvUri = "https://" + keyVaultName + ".vault.azure.net";
+    
+                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+
+                KeyVaultSecret secret = client.GetSecret(secretName);
+                secretValue = secret.Value;
+
+            }
+            catch (System.Exception)
+            {   
+                secretValue = "Unable to fetch";
+            }
+
+            ViewBag.SecretValue = secretValue;
 
             return View();
         }
